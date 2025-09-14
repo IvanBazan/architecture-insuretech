@@ -59,7 +59,7 @@ https://wondernetwork.com/pings/Moscow
    6.  С использованием pgBackRest собираем бэкапы на БД
 
 
-![Архитектурная схема](Task1\InsureTech_технологическая_архитектура-to-be.xml)
+[Архитектурная схема](Task1\InsureTech_технологическая_архитектура-to-be.drawio)
 
 Вопросы к схеме и ответы:
 
