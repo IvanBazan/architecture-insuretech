@@ -1,0 +1,89 @@
+type Client {
+  id: ID!
+  name: String!
+  age: Int!
+  documents: [Document!]!
+  relatives: [Relative!]!
+}
+
+type Document {
+  id: ID!
+  type: String!
+  number: String!
+  issueDate: String!
+  expiryDate: String!
+}
+
+type Relative {
+  id: ID!
+  relationType: String!
+  name: String!
+  age: Int!
+}
+
+type Query {
+  getClient(id: ID!): Client!
+}
+
+
+
+# возврат полного объекта клиента со всеми докуметами и родственниками 
+# такого не было в REST, просто пример
+
+query GetClientWithDetails($clientId: ID!) {
+  getClient(id: $clientId) {
+    id
+    name
+    age
+    documents {
+      id
+      type
+      number
+      issueDate
+      expiryDate
+    }
+    relatives {
+      id
+      relationType
+      name
+      age
+    }
+  }
+}
+
+# и уже из него можно отрезать аналогии REST методов
+
+# GET  /clients/{id}:
+query GetClient($clientId: ID!) {
+  getClient(id: $clientId) {
+    id
+    name
+    age
+  }
+}
+
+# GET /clients/{id}/documents:
+query GetClientDocuments($clientId: ID!) {
+  getClient(id: $clientId) {
+    documents {
+      id
+      type
+      number
+      issueDate
+      expiryDate
+    }
+  }
+}
+
+
+# GET /clients/{id}/relatives:
+query GetClientRelatives($clientId: ID!) {
+  getClient(id: $clientId) {
+    relatives {
+      id
+      relationType
+      name
+      age
+    }
+  }
+}
